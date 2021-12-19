@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TemperatureConversion.Temperatures
+namespace TemperatureConversion.TemperatureSystems
 {
-    public abstract class Temperature
+    public abstract class TemperatureSystem
     {
         public abstract double ToKelvin(double degrees);
         public abstract double FromKelvin(double degrees);

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TemperatureConversion.Temperatures
+namespace TemperatureConversion.TemperatureSystems
 {
-    public class Fahrenheit : Temperature
+    public class Fahrenheit : TemperatureSystem
     {
         public override double FromKelvin(double degrees)
         {

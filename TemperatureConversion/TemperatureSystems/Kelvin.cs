@@ -2,18 +2,18 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TemperatureConversion.Temperatures
+namespace TemperatureConversion.TemperatureSystems
 {
-    public class Celsius : Temperature
+    public class Kelvin : TemperatureSystem
     {
         public override double FromKelvin(double degrees)
         {
-            return degrees - 273.15;
+            return degrees;
         }
 
         public override double ToKelvin(double degrees)
         {
-            return degrees + 273.15;
+            return degrees;
         }
     }
 }
