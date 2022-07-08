@@ -1,8 +1,5 @@
 ﻿using FluentAssertions;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using TemperatureConversion.TemperatureSystems;
 
 namespace TemperatureConversion.Tests.TemperatureSystems
@@ -15,10 +12,13 @@ namespace TemperatureConversion.Tests.TemperatureSystems
         [TestCase(100)]
         public void FromKelvin(double expectedDegrees)
         {
+            // Arrange
             TemperatureSystem temperature = new Kelvin();
 
+            // Act
             var actualDegrees = temperature.FromKelvin(expectedDegrees);
 
+            // Assert
             actualDegrees.Should().Be(expectedDegrees);
         }
 
@@ -27,10 +27,13 @@ namespace TemperatureConversion.Tests.TemperatureSystems
         [TestCase(100)]
         public void ToKelvin(double expectedDegrees)
         {
+            // Arrange
             TemperatureSystem temperature = new Kelvin();
 
+            // Act
             var actualDegrees = temperature.ToKelvin(expectedDegrees);
 
+            // Assert
             actualDegrees.Should().Be(expectedDegrees);
         }
     }
