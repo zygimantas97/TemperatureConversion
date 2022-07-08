@@ -7,23 +7,56 @@ namespace TemperatureConversion.Client
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Temperature Converter");
+            PrintHeader();
             var converter = new TemperatureConverter();
             var command = string.Empty;
-            while(command.ToUpper() != "Q")
+            while (command.ToUpper() != "Q")
             {
-                Console.WriteLine("Enter temperature you want convert from (ex. '1 K'):");
-                var temperatureExpression = Console.ReadLine();
-                var temperature = Temperature.Parse(temperatureExpression);
-                Console.WriteLine("Enter temperature system you want convert to (ex. 'C'):");
-                var temperatureSystemExpression = Console.ReadLine();
-                var temperatureSystem = Enum.Parse<TemperatureType>(temperatureSystemExpression).Create();
-
-                var result = converter.Convert(temperature, temperatureSystem);
-                Console.WriteLine($"{result.Degrees} {temperatureSystemExpression}");
-                Console.WriteLine("If you want exit press 'Q' key, otherwise press any key to continue.");
-                command = Console.ReadLine();
+                ExecuteTemperatureConversion(converter);
+                command = GetNextCommand();
             }
+        }
+
+        private static void PrintHeader()
+        {
+            var headerLine = new String('-', 25);
+            Console.WriteLine(headerLine);
+            Console.WriteLine("| Temperature Converter |");
+            Console.WriteLine(headerLine);
+        }
+
+        private static void ExecuteTemperatureConversion(ITemperatureConverter converter)
+        {
+            var temperatureConvertFrom = GetTemperatureConvertFrom();
+            var temperatureTypeConvertTo = GetTemperatureTypeConvertTo();
+            var temperatureSystemConvertTo = temperatureTypeConvertTo.Create();
+            var temperatureResult = converter.Convert(temperatureConvertFrom, temperatureSystemConvertTo);
+            PrintResult(temperatureTypeConvertTo, temperatureResult);
+        }
+
+        private static Temperature GetTemperatureConvertFrom()
+        {
+            Console.WriteLine("Enter temperature you want convert from (ex. '1 K'):");
+            var temperatureExpression = Console.ReadLine();
+            return Temperature.Parse(temperatureExpression);
+        }
+
+        private static TemperatureType GetTemperatureTypeConvertTo()
+        {
+            Console.WriteLine("Enter temperature system you want convert to (ex. 'C'):");
+            var temperatureTypeExpression = Console.ReadLine();
+            return Enum.Parse<TemperatureType>(temperatureTypeExpression);
+        }
+
+        private static void PrintResult(TemperatureType temperatureTypeConvertTo, Temperature temperatureResult)
+        {
+            Console.WriteLine($"{temperatureResult.Degrees} {temperatureTypeConvertTo}");
+        }
+
+        private static string GetNextCommand()
+        {
+            Console.WriteLine("If you want exit press 'Q' key, otherwise press any key to continue.");
+            return Console.ReadLine();
         }
     }
 }
