@@ -12,7 +12,7 @@ namespace TemperatureConversion
         public static Temperature Parse(string temperatureExpression)
         {
             if (temperatureExpression == null)
-                throw new ArgumentException("Provided argument can not be null.", nameof(temperatureExpression));
+                throw new ArgumentException("Provided expression can not be null.", nameof(temperatureExpression));
 
             var expressionParts = temperatureExpression.Split(" ");
             if (expressionParts.Length != 2)
