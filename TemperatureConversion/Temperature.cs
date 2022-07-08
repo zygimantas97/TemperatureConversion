@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using TemperatureConversion.TemperatureSystems;
+﻿using TemperatureConversion.TemperatureSystems;
 
 namespace TemperatureConversion
 {
