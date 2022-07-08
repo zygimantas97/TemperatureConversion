@@ -1,6 +1,7 @@
 ﻿using FluentAssertions;
 using NUnit.Framework;
 using System;
+using TemperatureConversion.Extensions;
 
 namespace TemperatureConversion.Tests
 {
